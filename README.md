@@ -18,11 +18,13 @@ Toolset for easy development with Perceive-Music-Transformer (https://github.com
 # Example
 - Create dataset
 ```
+# load ./mids/*.mid and create dataset to ./dataset dir`
 create_dataset("mids", "dataset")
 ```
 
 - load dataset
 ```
+# load dataset from ./dataset dir`
 train_data = load_train_data("dataset")
 ```
 
@@ -34,7 +36,7 @@ pmt.init_model()
 # prepare training data
 train_loader, val_loader = pmt.prepare_train_data(train_data)
 
-# train
+# train and save checkpoints to ./checkpoints dir
 pmt.train(train_loader, val_loader, "checkpoints")
 ```
 
