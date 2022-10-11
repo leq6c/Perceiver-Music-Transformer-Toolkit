@@ -16,20 +16,18 @@ Toolset for easy development with Perceive-Music-Transformer (https://github.com
 - https://github.com/asigalov61/tegridy-tools
 
 # Example
+- Create dataset
 ```
-# =======================
-# create dataset from mid
-# =======================
-# create dataset from folder
 create_dataset("mids", "dataset")
+```
 
-# load dataset
+- load dataset
+```
 train_data = load_train_data("dataset")
+```
 
-# =======================
-# training
-# =======================
-# init
+- train
+```
 pmt = PerceiverMusicTransformerToolkit() # you can specify params here to train
 pmt.init_model()
 
@@ -38,10 +36,10 @@ train_loader, val_loader = pmt.prepare_train_data(train_data)
 
 # train
 pmt.train(train_loader, val_loader, "checkpoints")
+```
 
-# =======================
-# evaluation
-# =======================
+- eval
+```
 # generate continue
 input_data = midifile_to_input("seed.mid")
 output_data = pmt.generate_continue(input_data)
@@ -51,12 +49,11 @@ input_to_midi(output_data, "output.mid")
 
 # save toolkit params
 save_toolkit_params(pmt, "params.dump")
+```
 
-# =======================
-# load toolkit from params
-# =======================
+- load
+```
 pmt = load_toolkit_params("params.dump")
 # load ckpt
 pmt.load_model("checkpoints/...")
-# ...
 ```
