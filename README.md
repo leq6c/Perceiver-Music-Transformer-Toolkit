@@ -4,12 +4,6 @@ Toolset for easy development with Perceive-Music-Transformer (https://github.com
 # Paper
 - https://arxiv.org/abs/2202.07765
 
-# Note for prameters tuning
-- `SEQ_LEN`: Perceiver-AR inputs are fixed length. You can specify max length of its sequence. 
-- `PREFIX_SEQ_LEN`: Length of Key and Value for cross-attention.
-- `HEADS`: Number of heads of multi-head-attention. 
-- `DEPTH`: Number of latents-self-attention. 
-
 # Links
 - https://github.com/asigalov61/Perceiver-Music-Transformer
 - https://github.com/asigalov61/Euterpe
@@ -65,3 +59,9 @@ pmt = load_toolkit_params("params.dump")
 # load ckpt
 pmt.load_model("checkpoints/...")
 ```
+
+# Note for prameters tuning
+- `SEQ_LEN`: Perceiver-AR inputs are fixed length. You can specify max length of its sequence. 
+- `PREFIX_SEQ_LEN`: Length of Key and Value for cross-attention.
+- `HEADS`: Number of heads of multi-head-attention. 
+- `DEPTH`: Number of latents-self-attention. 
