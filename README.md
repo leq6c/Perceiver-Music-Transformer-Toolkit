@@ -15,6 +15,12 @@ Toolset for easy development with Perceive-Music-Transformer (https://github.com
 - https://github.com/asigalov61/Euterpe
 - https://github.com/asigalov61/tegridy-tools
 
+# Install
+```
+python setup.py install
+```
+- writing `requirements.txt` is still in progress. 
+
 # Example
 - Create dataset
 ```
