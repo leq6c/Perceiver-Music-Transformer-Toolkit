@@ -15,6 +15,11 @@ python setup.py install
 ```
 - writing `requirements.txt` is still in progress. 
 
+# Tensorboard
+```
+tensorboard --logdir ./tensorboard_logs
+```
+
 # Example
 - Create dataset
 ```

@@ -8,8 +8,10 @@ from torch.nn import functional as F
 import matplotlib.pyplot as plt
 from sklearn import metrics
 from tegridy_tools import TMIDIX
+from torch.utils.tensorboard import SummaryWriter
 
 def train(model, optim, train_loader, val_loader, NUM_BATCHES, GRADIENT_ACCUMULATE_EVERY, VALIDATE_EVERY, GENERATE_EVERY, GENERATE_LENGTH, SAVE_EVERY, checkpoint_dir, enable_plt=False):
+    writer = SummaryWriter(log_dir="./tensorboard_logs")
     # Train the model
     train_losses = []
     val_losses = []
@@ -38,6 +40,8 @@ def train(model, optim, train_loader, val_loader, NUM_BATCHES, GRADIENT_ACCUMULA
             model.eval()
             with torch.no_grad():
                 val_loss, val_acc = model(next(val_loader))
+                writer.add_scalar("val_loss", val_loss, i)
+                writer.add_scalar("val_acc", val_acc, i)
                 print(f'Validation loss: {val_loss.item()}')
                 print(f'Validation acc: {val_acc.item()}')
                 val_losses.append(val_loss.item())
@@ -93,3 +97,5 @@ def train(model, optim, train_loader, val_loader, NUM_BATCHES, GRADIENT_ACCUMULA
             fname = os.path.join(checkpoint_dir, 'model_checkpoint_'  + str(i) + '_steps_' + str(round(float(train_losses[-1]), 4)) + '_loss.pth')
             torch.save(model.state_dict(), fname)
             print('Done!')
+
+    writer.close()
