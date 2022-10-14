@@ -51,7 +51,7 @@ class PerceiverMusicTransformerToolkit:
         train(self.model, self.optim, train_loader, val_loader, self.NUM_BATCHES, self.GRADIENT_ACCUMULATE_EVERY, self.VALIDATE_EVERY, self.GENERATE_EVERY, self.GENERATE_LENGTH, self.SAVE_EVERY, checkpoint_dir, enable_plt=enable_plt)
     
     def load_model(self, full_path_to_model_checkpoint):
-        model, optim = load_model(self.NUM_TOKENS, self.DIMS, self.DEPTH, self.HEADS, self.DIM_HEAD, self.CROSS_ATTN_DROPOUT, self.SEQ_LEN, self.PREFIX_SEQ_LEN, self.NUM_BATCHES, self.LEARNING_RATE)
+        model, optim = load_model(self.NUM_TOKENS, self.DIMS, self.DEPTH, self.HEADS, self.DIM_HEAD, self.CROSS_ATTN_DROPOUT, self.SEQ_LEN, self.PREFIX_SEQ_LEN, self.NUM_BATCHES, self.LEARNING_RATE, full_path_to_model_checkpoint)
         self.model = model
         self.optim = optim
     

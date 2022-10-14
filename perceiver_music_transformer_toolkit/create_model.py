@@ -31,7 +31,7 @@ def create_model(NUM_TOKENS, DIMS, DEPTH, HEADS, DIM_HEAD, CROSS_ATTN_DROPOUT, S
     
     return model, optim
 
-def load_model(NUM_TOKENS, DIMS, DEPTH, HEADS, DIM_HEAD, CROSS_ATTN_DROPOUT, SEQ_LEN, PREFIX_SEQ_LEN, NUM_BATCHES, LEARNING_RATE):
+def load_model(NUM_TOKENS, DIMS, DEPTH, HEADS, DIM_HEAD, CROSS_ATTN_DROPOUT, SEQ_LEN, PREFIX_SEQ_LEN, NUM_BATCHES, LEARNING_RATE, full_path_to_model_checkpoint):
     model, optim = create_model(NUM_TOKENS, DIMS, DEPTH, HEADS, DIM_HEAD, CROSS_ATTN_DROPOUT, SEQ_LEN, PREFIX_SEQ_LEN, NUM_BATCHES, LEARNING_RATE)
     
     state_dict = torch.load(full_path_to_model_checkpoint)
