@@ -20,13 +20,12 @@ def generate_continue(model, inputs, number_of_prime_tokens=512, number_of_token
     print('=' * 70)
     print('Generating...')
 
-    inp = [0, 127+128, 127+256, 0+384] * 8192
-
-    inp = inp[:-(number_of_prime_tokens+len(inputs[:number_of_prime_tokens]))] + inputs[:number_of_prime_tokens]
+    inp = inputs[:number_of_prime_tokens]
+    print("inp:", len(inp))
 
     inp = torch.LongTensor(inp).cuda()
 
-    out = model.generate(inp[None, ...], 
+    out = model.generate(inp,
                          number_of_tokens_to_generate, 
                          temperature=temperature)  
 
