@@ -59,4 +59,4 @@ class PerceiverMusicTransformerToolkit:
         self.model.eval()
     
     def generate_continue(self, inputs, number_of_prime_tokens=512, number_of_tokens_to_generate=512, temperature=0.8):
-        return generate_continue(self.model, inputs, number_of_prime_tokens, number_of_tokens_to_generate, temperature)
+        return generate_continue(self.model, inputs, self.SEQ_LEN, number_of_prime_tokens, number_of_tokens_to_generate, temperature)

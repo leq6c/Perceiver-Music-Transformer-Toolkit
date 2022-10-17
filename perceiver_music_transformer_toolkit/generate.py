@@ -1,6 +1,6 @@
 import torch
 
-def generate_continue(model, inputs, number_of_prime_tokens=512, number_of_tokens_to_generate=512, temperature=0.8):
+def generate_continue(model, inputs, seq_len, number_of_prime_tokens=512, number_of_tokens_to_generate=512, temperature=0.8):
     #@markdown NOTE: Play with the settings to get different results
     # number_of_prime_tokens = 512 #@param {type:"slider", min:16, max:512, step:16}
     # number_of_tokens_to_generate = 512 #@param {type:"slider", min:64, max:512, step:32}
@@ -20,12 +20,13 @@ def generate_continue(model, inputs, number_of_prime_tokens=512, number_of_token
     print('=' * 70)
     print('Generating...')
 
-    inp = inputs[:number_of_prime_tokens]
+    inp = [0, 127+128, 127+256, 0+384] * (seq_len - number_of_prime_tokens) / 4
+    inp += inputs[:number_of_prime_tokens]
     print("inp:", len(inp))
 
     inp = torch.LongTensor(inp).cuda()
 
-    out = model.generate(inp,
+    out = model.generate(inp[None, ...],
                          number_of_tokens_to_generate, 
                          temperature=temperature)  
 
